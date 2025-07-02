@@ -22,8 +22,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          api-key: github.secrets
       - run: npm ci
       - run: npm test
+
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
