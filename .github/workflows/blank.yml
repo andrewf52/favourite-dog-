@@ -10,24 +10,27 @@ on:
       - main
   pull_request:
     branches: 
-      - main:
+      - main
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  balls:
-    runs-on: ubuntu-latest + node version 20
+  bruh:
+    runs-on: ubuntu-latest 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with: 
           node-version: 20
-          api-key: github.secrets
-      - run: npm ci
-      - run: npm test
-
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        env:
+          API_KEY:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
